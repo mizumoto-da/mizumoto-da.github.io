@@ -4,7 +4,7 @@
   <title><![CDATA[Sarchitect echo]]></title>
   <link href="http://mizumoto-da.github.io/atom.xml" rel="self"/>
   <link href="http://mizumoto-da.github.io/"/>
-  <updated>2013-12-22T05:31:14+09:00</updated>
+  <updated>2013-12-22T05:43:48+09:00</updated>
   <id>http://mizumoto-da.github.io/</id>
   <author>
     <name><![CDATA[mizumoto-da]]></name>
@@ -12,5 +12,18 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[vSphere 5.5 Nested Environment for Lab]]></title>
+    <link href="http://mizumoto-da.github.io/blog/vsphere-5-dot-5-nested-environment-for-lab/"/>
+    <updated>2013-12-22T05:34:10+09:00</updated>
+    <id>http://mizumoto-da.github.io/blog/vsphere-5-dot-5-nested-environment-for-lab</id>
+    <content type="html"><![CDATA[<p>最近身の回りでは自宅ラボを構築するというのがはやりになっているようです。機材を調達して自宅IaaS基盤を構築し、思い思いのシステムを作っては壊し、ということでしょう。</p>
+
+<p>そういった基盤を構成する上で書かせないのがハイパーバイザーを使った環境になる訳ですが、ハイパーバイザー自身のシステムを動作させるためには、ある程度のハードウェアリソースが必要になりますし、何よりハイパーバイザー上にハイパーバイザーを動作させるネスト環境が必要になる訳です。</p>
+
+<p>ここではESXi 5.5を使用したネスト環境を構成する方法を示したいと思います。</p>
+]]></content>
+  </entry>
   
 </feed>

@@ -1,12 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://mizumoto-da.github.io/blog/vsphere-5-dot-5-nested-environment-for-lab/</loc>
+        <lastmod>2013-12-22T05:42:08+09:00</lastmod>
+    </url>
+    <url>
         <loc>http://mizumoto-da.github.io/blog/archives/</loc>
-        <lastmod>2013-12-22T04:17:39+09:00</lastmod>
+        <lastmod>2013-12-22T05:42:08+09:00</lastmod>
     </url>
     <url>
         <loc>http://mizumoto-da.github.io/</loc>
-        <lastmod>2013-12-22T04:17:39+09:00</lastmod>
+        <lastmod>2013-12-22T05:42:08+09:00</lastmod>
     </url>
     <url>
         <loc>http://mizumoto-da.github.io/robots.txt</loc>

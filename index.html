@@ -9,7 +9,7 @@
   <meta name="author" content="mizumoto-da">
 
   
-  <meta name="description" content=" Blog Archives Recent Posts About Me A little something about me. Categories ">
+  <meta name="description" content="最近身の回りでは自宅ラボを構築するというのがはやりになっているようです。機材を調達して自宅IaaS基盤を構築し、思い思いのシステムを作っては壊し、ということでしょう。 そういった基盤を構成する上で書かせないのがハイパーバイザーを使った環境になる訳ですが、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -69,6 +69,46 @@ $(document).ready( function () {
       <div class="blog-index">
   
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/vsphere-5-dot-5-nested-environment-for-lab/">vSphere 5.5 Nested Environment for Lab</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-22T05:34:10+09:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近身の回りでは自宅ラボを構築するというのがはやりになっているようです。機材を調達して自宅IaaS基盤を構築し、思い思いのシステムを作っては壊し、ということでしょう。</p>
+
+<p>そういった基盤を構成する上で書かせないのがハイパーバイザーを使った環境になる訳ですが、ハイパーバイザー自身のシステムを動作させるためには、ある程度のハードウェアリソースが必要になりますし、何よりハイパーバイザー上にハイパーバイザーを動作させるネスト環境が必要になる訳です。</p>
+
+<p>ここではESXi 5.5を使用したネスト環境を構成する方法を示したいと思います。</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -80,6 +120,10 @@ $(document).ready( function () {
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/vsphere-5-dot-5-nested-environment-for-lab/">vSphere 5.5 Nested Environment for Lab</a>
+      </li>
     
   </ul>
 </section>
@@ -106,15 +150,6 @@ $(document).ready( function () {
   
 
 
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
 
 

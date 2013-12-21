@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://mizumoto-da.github.io/sitemap.xml 

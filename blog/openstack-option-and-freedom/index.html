@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Sarchitect echo</title>
+  <title>OpenStack の選択の自由 - Sarchitect echo</title>
   <meta name="author" content="mizumoto-da">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mizumoto-da.github.io">
+  <link rel="canonical" href="http://mizumoto-da.github.io/blog/openstack-option-and-freedom">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Sarchitect echo" type="application/atom+xml">
@@ -66,15 +66,12 @@ $(document).ready( function () {
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/openstack-option-and-freedom/">OpenStack の選択の自由</a></h1>
+      <h1 class="entry-title">OpenStack の選択の自由</h1>
     
     
       <p class="meta">
@@ -92,15 +89,15 @@ $(document).ready( function () {
 
 <time datetime="2013-12-23T02:13:46+09:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2013</time>
         
-           | <a href="/blog/openstack-option-and-freedom/#disqus_thread"
-             data-disqus-identifier="http://mizumoto-da.github.io/blog/openstack-option-and-freedom/">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://mizumoto-da.github.io">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>OpenStack の環境を構築します、といったときに皆さんどういう構成を思い浮かべるでしょうか。最近はドキュメントも充実してきているので、標準的なリファレンス構成を組むのであれば、情報には事欠かないかと思います。ですが実際には目的とする用途やコスト、運用モデルに合わせて様々考えられると思います。よいIaaS環境を構築できれば分散しているリソースを組織全体や外部へのサービスとして共有化、集約化することでスピードや生産性を高められます。そうしたOpenStackが持つメリットと組織の目的とをうまくソリューション化できればよいことはわかります。実際に北米を中心に、多くの企業がこれを取り込もうとしています。ではそのためのベストな構成とは何でしょうか。</p>
+<div class="entry-content"><p>OpenStack の環境を構築します、といったときに皆さんどういう構成を思い浮かべるでしょうか。最近はドキュメントも充実してきているので、標準的なリファレンス構成を組むのであれば、情報には事欠かないかと思います。ですが実際には目的とする用途やコスト、運用モデルに合わせて様々考えられると思います。よいIaaS環境を構築できれば分散しているリソースを組織全体や外部へのサービスとして共有化、集約化することでスピードや生産性を高められます。そうしたOpenStackが持つメリットと組織の目的とをうまくソリューション化できればよいことはわかります。実際に北米を中心に、多くの企業がこれを取り込もうとしています。ではそのためのベストな構成とは何でしょうか。</p>
 
 <p>(OpenStack Advent Calendar 2013 JPにエントリーして書いています。<a href="https://github.com/irixjp/opstjp-ac/wiki/OpenStack-Advent-Calendar-2013-JP">https://github.com/irixjp/opstjp-ac/wiki/OpenStack-Advent-Calendar-2013-JP</a> )</p>
 
@@ -203,79 +200,16 @@ $(document).ready( function () {
 <p>参考: ここで紹介した以外にも、MacOSのFusion上でVOVAを動作させた有志もいるようです。こちらの場合は持ち歩けるOpenStackデモ環境になりますね。
 <a href="http://virtualizedgeek.com/2013/12/22/installing-vmwares-openstack-virtual-appliance-in-vmware-fusion-techtalk-video/">http://virtualizedgeek.com/2013/12/22/installing-vmwares-openstack-virtual-appliance-in-vmware-fusion-techtalk-video/</a></p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/openstack-vova-havana/">OpenStack VOVA Havana</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">mizumoto-da</span></span>
 
-<time datetime="2013-12-22T06:20:52+09:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2013</time>
-        
-           | <a href="/blog/openstack-vova-havana/#disqus_thread"
-             data-disqus-identifier="http://mizumoto-da.github.io/blog/openstack-vova-havana/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>OpenStack Havana リリースを使いたい！ということで色々やっているんですが、やはりパッケージに勝るものはない、ということで今回はVOVAです。</p>
-
-<p>11月にHavana版がリリースされてます。主な機能追加は下記です。</p>
-
-<ul>
-<li>novaコンピュートノードあたりvCenter配下の複数のクラスタに対応</li>
-<li>VMDKドライバ (Cinder)</li>
-<li>vSphere Web クライアントのプラグインの追加</li>
-<li>vDS(vSphere Distributed Switch: 分散仮想スイッチ</li>
-</ul>
-
-
-<p><img class="right" src="http://blogs.vmware.com/vsphere/files/2013/11/Team-OpenStack-@-VMware-300x220.png"></p>
-
-<p>コミュニティのページはこちらです。</p>
-
-<p><a href="https://communities.vmware.com/community/vmtn/openstack">https://communities.vmware.com/community/vmtn/openstack</a></p>
-
-<p>こちらにあるマニュアルにOVAのイメージのURLが記載されていますので、ダウンロード後インストール対象の環境にデプロイしてください。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/vsphere-5-5-nested-environment-for-lab/">vSphere 5.5 Nested Environment for Lab</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -287,74 +221,45 @@ $(document).ready( function () {
   
 
 
-<time datetime="2013-12-21T05:34:10+09:00" pubdate data-updated="true">Dec 21<span>st</span>, 2013</time>
-        
-           | <a href="/blog/vsphere-5-5-nested-environment-for-lab/#disqus_thread"
-             data-disqus-identifier="http://mizumoto-da.github.io/blog/vsphere-5-5-nested-environment-for-lab/">Comments</a>
-        
-      </p>
+<time datetime="2013-12-23T02:13:46+09:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2013</time>
+      
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>最近身の回りでは自宅ラボを構築するというのがはやりになっているようです。機材を調達して自宅IaaS基盤を構築し、思い思いのシステムを作っては壊し、ということでしょう。</p>
-
-<p>そういった基盤を構成する上で書かせないのがハイパーバイザーを使った環境になる訳ですが、ハイパーバイザー自身のシステムを動作させるためには、ある程度のハードウェアリソースが必要になりますし、何よりハイパーバイザー上にハイパーバイザーを動作させるネスト環境が必要になる訳です。</p>
-
-<p>ここではESXi 5.5を使用したネスト環境を構成する方法を示したいと思います。</p>
-
-<p>まず、ベースとなるESXi 5.5をインストールします。これは通常の方法で構いません。</p>
-
-<p>起動後、SSHログインを有効化し、下記の設定ファイルの変更とhostdサービスの再起動を行います。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>~ # vi /etc/vmware/config
-</span><span class='line'>
-</span><span class='line'>libdir = "/usr/lib/vmware"
-</span><span class='line'>authd.proxy.nfc = "vmware-hostd:ha-nfc"
-</span><span class='line'>authd.proxy.nfcssl = "vmware-hostd:ha-nfcssl"
-</span><span class='line'>authd.proxy.vpxa-nfcssl = "vmware-vpxa:vpxa-nfcssl"
-</span><span class='line'>authd.proxy.vpxa-nfc = "vmware-vpxa:vpxa-nfc"
-</span><span class='line'>authd.fullpath = "/sbin/authd"
-</span><span class='line'>vhv.enable = "true"</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>~ # /etc/init.d/hostd restart
-</span><span class='line'>watchdog-hostd: Terminating watchdog process with PID 33855
-</span><span class='line'>hostd stopped.
-</span><span class='line'>Ramdisk 'hostd' with estimated size of 553MB already exists
-</span><span class='line'>hostd started.</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ネスト化されたVMとしてのESXiをインストールします。この際、ウィザード上は一旦OSの種別でOther Linux(64bit)を選択し、VMの作成が終わった時点で再度OSのタイプを指定します。するとVMware ESXi 5.xが選択できます。こちらを行ってから再びESXiのインストールを行ってください。</p>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mizumoto-da.github.io/blog/openstack-option-and-freedom/" data-via="mizumoto-da" data-counturl="http://mizumoto-da.github.io/blog/openstack-option-and-freedom/" >Tweet</a>
+  
+  
+  <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button"
+      data-hatena-bookmark-layout="standard"
+      data-hatena-bookmark-url="http://mizumoto-da.github.io/blog/openstack-option-and-freedom/">
+    <img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+        alt="このエントリーをはてなブックマークに追加" width="20" height="20"
+        style="border: none">
+  </a>
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/openstack-vova-havana/" title="Previous Post: OpenStack VOVA Havana">&laquo; OpenStack VOVA Havana</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
+  </section>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -387,6 +292,7 @@ $(document).ready( function () {
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -401,7 +307,10 @@ $(document).ready( function () {
       var disqus_shortname = 'sarchitect';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mizumoto-da.github.io/blog/openstack-option-and-freedom/';
+        var disqus_url = 'http://mizumoto-da.github.io/blog/openstack-option-and-freedom/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

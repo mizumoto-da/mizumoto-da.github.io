@@ -4,7 +4,7 @@
   <title><![CDATA[Sarchitect echo]]></title>
   <link href="http://mizumoto-da.github.io/atom.xml" rel="self"/>
   <link href="http://mizumoto-da.github.io/"/>
-  <updated>2013-12-23T13:50:57+09:00</updated>
+  <updated>2013-12-23T13:52:54+09:00</updated>
   <id>http://mizumoto-da.github.io/</id>
   <author>
     <name><![CDATA[mizumoto-da]]></name>
@@ -12,6 +12,116 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[OpenStack の選択の自由]]></title>
+    <link href="http://mizumoto-da.github.io/blog/openstack-option-and-freedom/"/>
+    <updated>2013-12-23T02:13:46+09:00</updated>
+    <id>http://mizumoto-da.github.io/blog/openstack-option-and-freedom</id>
+    <content type="html"><![CDATA[<p>OpenStack の環境を構築します、といったときに皆さんどういう構成を思い浮かべるでしょうか。最近はドキュメントも充実してきているので、標準的なリファレンス構成を組むのであれば、情報には事欠かないかと思います。ですが実際には目的とする用途やコスト、運用モデルに合わせて様々考えられると思います。よいIaaS環境を構築できれば分散しているリソースを組織全体や外部へのサービスとして共有化、集約化することでスピードや生産性を高められます。そうしたOpenStackが持つメリットと組織の目的とをうまくソリューション化できればよいことはわかります。実際に北米を中心に、多くの企業がこれを取り込もうとしています。ではそのためのベストな構成とは何でしょうか。</p>
+
+<p>(OpenStack Advent Calendar 2013 JPにエントリーして書いています。<a href="https://github.com/irixjp/opstjp-ac/wiki/OpenStack-Advent-Calendar-2013-JP">https://github.com/irixjp/opstjp-ac/wiki/OpenStack-Advent-Calendar-2013-JP</a> )</p>
+
+<p>今現在のOpenStackのユースケースのわかりやすい例としては大手サービスプロバイダのIaaS環境があげられます。ですが今後拡大して行くであろうユースケースをOpenStackが提供して行くには何が必要か。おそらくこれを満たす単一の答えはないのだと思います。ただ一ついえるのは、ユーザ側に様々な選択肢が提供されていれば、課題は解決されて行くのだと思います。</p>
+
+<p>では具体的に、OpenStack の検証環境を構成する最も簡単な方法の一つを紹介します。用意したものはOpenStack Havanaのベース環境として前回記事で紹介したVOVAのオールインワン構成と、nova-compute環境をそれを稼働させるハードウェア環境です:</p>
+
+<ul>
+<li>VOVA 0.2.1</li>
+<li>仮想化環境: ESXi 5.5.0 (ベース、ネストとも）</li>
+<li>nova用環境: vCenter VM 5.5</li>
+<li>設定用: Windows7 (vSphere Client)</li>
+<li>物理サーバ1台, ネットワーク環境（この環境とOpenStackを利用するユーザの外部ネットワークの位置づけ）</li>
+</ul>
+
+
+<p>前回記事で紹介したURLから、VOVAのOVAファイルをダウンロードしておきます。また、vCenterについても評価版などを使用して今回のベースESXi 5.5にデプロイして、データセンター、クラスタを構成しておきます。今回は下記のように構成しました。</p>
+
+<ul>
+<li>vCenter 5.5.0b</li>
+<li>VOVA用のESXi (ネスト）</li>
+<li>データセンター: VOVA_Testbed</li>
+<li>クラスタ: c1, c2 の2つ、それぞれ1つずつESXi（ネストしたもの）を接続しておく</li>
+</ul>
+
+
+<p>基本的には上記の通りですが、ESXi用のネットワーク構成として管理用のネットワーク（VM Network）とOpenStack用のネットワーク（br100, VLAN100）をそれぞれ構成し、ESXiに仮想NICとして接続しておきます。</p>
+
+<p>まず、VOVAのOVAファイルをデプロイします。vCenterにvSphereクライアントからログインし、ダウンロード済みのVOVAを選択します。
+<img src="http://mizumoto-da.github.io/images/vova/vova-ovf-deploy.png"></p>
+
+<p>テンプレートに関連情報を入力します。これはOpenStackとvCenterを接続するための情報としてVOVAのVMをデプロイするときに自動的に設定されます。
+<img src="http://mizumoto-da.github.io/images/vova/vova-ovf-template.png"></p>
+
+<p>しばらくするとVOVAのデプロイが終わり、VOVA VMのコンソールに下記のようなメッセージが出力されます。この環境では外部接続用のネットワークにDHCPを使用しているため、自動的にOpenStack Dashboard用のIPも割り当てられています。
+<img src="http://mizumoto-da.github.io/images/vova/vova-boot-console.png"></p>
+
+<p>DashboardにWebブラウザで接続してみます。</p>
+
+<p><img src="http://mizumoto-da.github.io/images/vova/vova-login.png"></p>
+
+<p>demoユーザでログインできます。ここまででOpenStack + vCenter/vSphereのnova-compute環境の構成が完了しました。</p>
+
+<p>この辺りの操作手順は公式のドキュメントにも記載されていますし、VMwareのハンズオンラボにもOpenStackの操作手順例が示されているので省略します。皆さんが普段目にされている手順とは全く異なるとは思いますが、非常に簡単にOpenStackの検証環境が用意できたのがおわかりいただけると思います。</p>
+
+<p>さらに、computeがどう構成されているかを見てみます。adminユーザで再度Dashboardにログインしてみます。</p>
+
+<p><img src="http://mizumoto-da.github.io/images/vova/vova-dboard-hypervisor.png"></p>
+
+<p>手順の前提で構成していたクラスタc1, c2がきちんと認識されているのが確認できますね。</p>
+
+<p>ここで、クラスタ（vCDriver経由のvCenter上のクラスタのコンピュートノード）へのホストの追加手順ですが、ESXiの初期設定を行ったホストを下記のようなウィザードで追加していました。</p>
+
+<p><img src="http://mizumoto-da.github.io/images/vova/vova-add-host-from-vcenter1.png"></p>
+
+<p><img src="http://mizumoto-da.github.io/images/vova/vova-add-host-from-vcenter2.png"></p>
+
+<p>いかがでしょうか。今後OpenStackのユースケースがエンタープライズ用途に拡大して行けば、KVMや他のコンピュート用ドライバと並んでVMware環境を接続することのイメージはつかんでいただけたかと思います。</p>
+
+<p>最後に上記環境のnova.confについて確認してみます。vCDriverが指定されています。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@localhost:~# cat /etc/nova/nova.conf 
+</span><span class='line'>
+</span><span class='line'>[DEFAULT]
+</span><span class='line'>flat_interface = eth1
+</span><span class='line'>flat_network_bridge = br100
+</span><span class='line'>vlan_interface = eth0
+</span><span class='line'>public_interface = eth0
+</span><span class='line'>network_manager = nova.network.manager.FlatDHCPManager
+</span><span class='line'>compute_driver = vmwareapi.VMwareVCDriver
+</span><span class='line'>glance_api_servers = 10.35.0.100:9292
+</span><span class='line'>-- 中略 --
+</span><span class='line'>[vmware]
+</span><span class='line'>host_password = vmware
+</span><span class='line'>host_username = root
+</span><span class='line'>host_ip = 10.35.1.6
+</span><span class='line'>#datastore_regex = NOT DEFINED
+</span><span class='line'>cluster_name = c1
+</span><span class='line'>cluster_name = c2</span></code></pre></td></tr></table></div></figure>
+
+
+<p>参考: ここで紹介した以外にも、MacOSのFusion上でVOVAを動作させた有志もいるようです。こちらの場合は持ち歩けるOpenStackデモ環境になりますね。
+<a href="http://virtualizedgeek.com/2013/12/22/installing-vmwares-openstack-virtual-appliance-in-vmware-fusion-techtalk-video/">http://virtualizedgeek.com/2013/12/22/installing-vmwares-openstack-virtual-appliance-in-vmware-fusion-techtalk-video/</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OpenStack VOVA Havana]]></title>

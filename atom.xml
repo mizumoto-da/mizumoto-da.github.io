@@ -4,7 +4,7 @@
   <title><![CDATA[Sarchitect echo]]></title>
   <link href="http://mizumoto-da.github.io/atom.xml" rel="self"/>
   <link href="http://mizumoto-da.github.io/"/>
-  <updated>2013-12-22T07:04:04+09:00</updated>
+  <updated>2013-12-23T13:41:55+09:00</updated>
   <id>http://mizumoto-da.github.io/</id>
   <author>
     <name><![CDATA[mizumoto-da]]></name>
@@ -18,7 +18,7 @@
     <link href="http://mizumoto-da.github.io/blog/openstack-vova-havana/"/>
     <updated>2013-12-22T06:20:52+09:00</updated>
     <id>http://mizumoto-da.github.io/blog/openstack-vova-havana</id>
-    <content type="html"><![CDATA[<p>OpenStack Havana リリースを使いたい！ということで色々やっているんですが、やはりパッケージに勝るものはない、ということで今回はVOVAをインストールしてみました。</p>
+    <content type="html"><![CDATA[<p>OpenStack Havana リリースを使いたい！ということで色々やっているんですが、やはりパッケージに勝るものはない、ということで今回はVOVAです。</p>
 
 <p>11月にHavana版がリリースされてます。主な機能追加は下記です。</p>
 
@@ -35,6 +35,8 @@
 <p>コミュニティのページはこちらです。</p>
 
 <p><a href="https://communities.vmware.com/community/vmtn/openstack">https://communities.vmware.com/community/vmtn/openstack</a></p>
+
+<p>こちらにあるマニュアルにOVAのイメージのURLが記載されていますので、ダウンロード後インストール対象の環境にデプロイしてください。</p>
 ]]></content>
   </entry>
   
@@ -48,6 +50,46 @@
 <p>そういった基盤を構成する上で書かせないのがハイパーバイザーを使った環境になる訳ですが、ハイパーバイザー自身のシステムを動作させるためには、ある程度のハードウェアリソースが必要になりますし、何よりハイパーバイザー上にハイパーバイザーを動作させるネスト環境が必要になる訳です。</p>
 
 <p>ここではESXi 5.5を使用したネスト環境を構成する方法を示したいと思います。</p>
+
+<p>まず、ベースとなるESXi 5.5をインストールします。これは通常の方法で構いません。</p>
+
+<p>起動後、SSHログインを有効化し、下記の設定ファイルの変更とhostdサービスの再起動を行います。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>~ # vi /etc/vmware/config
+</span><span class='line'>
+</span><span class='line'>libdir = "/usr/lib/vmware"
+</span><span class='line'>authd.proxy.nfc = "vmware-hostd:ha-nfc"
+</span><span class='line'>authd.proxy.nfcssl = "vmware-hostd:ha-nfcssl"
+</span><span class='line'>authd.proxy.vpxa-nfcssl = "vmware-vpxa:vpxa-nfcssl"
+</span><span class='line'>authd.proxy.vpxa-nfc = "vmware-vpxa:vpxa-nfc"
+</span><span class='line'>authd.fullpath = "/sbin/authd"
+</span><span class='line'>vhv.enable = "true"</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>~ # /etc/init.d/hostd restart
+</span><span class='line'>watchdog-hostd: Terminating watchdog process with PID 33855
+</span><span class='line'>hostd stopped.
+</span><span class='line'>Ramdisk 'hostd' with estimated size of 553MB already exists
+</span><span class='line'>hostd started.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ネスト化されたVMとしてのESXiをインストールします。この際、ウィザード上は一旦OSの種別でOther Linux(64bit)を選択し、VMの作成が終わった時点で再度OSのタイプを指定します。するとVMware ESXi 5.xが選択できます。こちらを行ってから再びESXiのインストールを行ってください。</p>
 ]]></content>
   </entry>
   

@@ -128,17 +128,17 @@ $(document).ready( function () {
 <p>基本的には上記の通りですが、ESXi用のネットワーク構成として管理用のネットワーク（VM Network）とOpenStack用のネットワーク（br100, VLAN100）をそれぞれ構成し、ESXiに仮想NICとして接続しておきます。</p>
 
 <p>まず、VOVAのOVAファイルをデプロイします。vCenterにvSphereクライアントからログインし、ダウンロード済みのVOVAを選択します。
-<img src="/images/vova/vova-ovf-deploy.png"></p>
+<a href=/images/vova/vova-ovf-deploy.png><img src="/images/vova/vova-ovf-deploy.png"></a></p>
 
 <p>テンプレートに関連情報を入力します。これはOpenStackとvCenterを接続するための情報としてVOVAのVMをデプロイするときに自動的に設定されます。
-<img src="/images/vova/vova-ovf-template.png"></p>
+<a href=/images/vova/vova-ovf-template.png><img src="/images/vova/vova-ovf-template.png"></a></p>
 
 <p>しばらくするとVOVAのデプロイが終わり、VOVA VMのコンソールに下記のようなメッセージが出力されます。この環境では外部接続用のネットワークにDHCPを使用しているため、自動的にOpenStack Dashboard用のIPも割り当てられています。
-<img src="/images/vova/vova-boot-console.png"></p>
+<a href=/images/vova/vova-boot-console.png><img src="/images/vova/vova-boot-console.png"></a></p>
 
 <p>DashboardにWebブラウザで接続してみます。</p>
 
-<p><img src="/images/vova/vova-login.png"></p>
+<p><a href=/images/vova/vova-login.png><img src="/images/vova/vova-login.png"></a></p>
 
 <p>demoユーザでログインできます。ここまででOpenStack + vCenter/vSphereのnova-compute環境の構成が完了しました。</p>
 
@@ -146,15 +146,15 @@ $(document).ready( function () {
 
 <p>さらに、computeがどう構成されているかを見てみます。adminユーザで再度Dashboardにログインしてみます。</p>
 
-<p><img src="/images/vova/vova-dboard-hypervisor.png"></p>
+<p><a href=/images/vova/vova-dboard-hypervisor.png><img src="/images/vova/vova-dboard-hypervisor.png"></a></p>
 
 <p>手順の前提で構成していたクラスタc1, c2がきちんと認識されているのが確認できますね。</p>
 
 <p>ここで、クラスタ（vCDriver経由のvCenter上のクラスタのコンピュートノード）へのホストの追加手順ですが、ESXiの初期設定を行ったホストを下記のようなウィザードで追加していました。</p>
 
-<p><img src="/images/vova/vova-add-host-from-vcenter1.png"></p>
+<p><a href=/images/vova/vova-add-host-from-vcenter1.png><img src="/images/vova/vova-add-host-from-vcenter1.png"></a></p>
 
-<p><img src="/images/vova/vova-add-host-from-vcenter2.png"></p>
+<p><a href=/images/vova/vova-add-host-from-vcenter2.png><img src="/images/vova/vova-add-host-from-vcenter2.png"></a></p>
 
 <p>いかがでしょうか。今後OpenStackのユースケースがエンタープライズ用途に拡大して行けば、KVMや他のコンピュート用ドライバと並んでVMware環境を接続することのイメージはつかんでいただけたかと思います。</p>
 
@@ -233,13 +233,8 @@ $(document).ready( function () {
   <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mizumoto-da.github.io/blog/openstack-option-and-freedom/" data-via="mizumoto-da" data-counturl="http://mizumoto-da.github.io/blog/openstack-option-and-freedom/" >Tweet</a>
   
   
-  <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button"
-      data-hatena-bookmark-layout="standard"
-      data-hatena-bookmark-url="http://mizumoto-da.github.io/blog/openstack-option-and-freedom/">
-    <img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-        alt="このエントリーをはてなブックマークに追加" width="20" height="20"
-        style="border: none">
-  </a>
+  <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" data-hatena-bookmark-url="http://mizumoto-da.github.io/blog/openstack-option-and-freedom/"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none"></a>
+    
   
 </div>
 

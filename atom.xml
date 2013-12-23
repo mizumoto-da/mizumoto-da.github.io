@@ -4,7 +4,7 @@
   <title><![CDATA[Sarchitect echo]]></title>
   <link href="http://mizumoto-da.github.io/atom.xml" rel="self"/>
   <link href="http://mizumoto-da.github.io/"/>
-  <updated>2013-12-23T15:03:17+09:00</updated>
+  <updated>2013-12-24T03:29:35+09:00</updated>
   <id>http://mizumoto-da.github.io/</id>
   <author>
     <name><![CDATA[mizumoto-da]]></name>
@@ -49,17 +49,17 @@
 <p>基本的には上記の通りですが、ESXi用のネットワーク構成として管理用のネットワーク（VM Network）とOpenStack用のネットワーク（br100, VLAN100）をそれぞれ構成し、ESXiに仮想NICとして接続しておきます。</p>
 
 <p>まず、VOVAのOVAファイルをデプロイします。vCenterにvSphereクライアントからログインし、ダウンロード済みのVOVAを選択します。
-<img src="http://mizumoto-da.github.io/images/vova/vova-ovf-deploy.png"></p>
+<a href=/images/vova/vova-ovf-deploy.png><img src="http://mizumoto-da.github.io/images/vova/vova-ovf-deploy.png"></a></p>
 
 <p>テンプレートに関連情報を入力します。これはOpenStackとvCenterを接続するための情報としてVOVAのVMをデプロイするときに自動的に設定されます。
-<img src="http://mizumoto-da.github.io/images/vova/vova-ovf-template.png"></p>
+<a href=/images/vova/vova-ovf-template.png><img src="http://mizumoto-da.github.io/images/vova/vova-ovf-template.png"></a></p>
 
 <p>しばらくするとVOVAのデプロイが終わり、VOVA VMのコンソールに下記のようなメッセージが出力されます。この環境では外部接続用のネットワークにDHCPを使用しているため、自動的にOpenStack Dashboard用のIPも割り当てられています。
-<img src="http://mizumoto-da.github.io/images/vova/vova-boot-console.png"></p>
+<a href=/images/vova/vova-boot-console.png><img src="http://mizumoto-da.github.io/images/vova/vova-boot-console.png"></a></p>
 
 <p>DashboardにWebブラウザで接続してみます。</p>
 
-<p><img src="http://mizumoto-da.github.io/images/vova/vova-login.png"></p>
+<p><a href=/images/vova/vova-login.png><img src="http://mizumoto-da.github.io/images/vova/vova-login.png"></a></p>
 
 <p>demoユーザでログインできます。ここまででOpenStack + vCenter/vSphereのnova-compute環境の構成が完了しました。</p>
 
@@ -67,15 +67,15 @@
 
 <p>さらに、computeがどう構成されているかを見てみます。adminユーザで再度Dashboardにログインしてみます。</p>
 
-<p><img src="http://mizumoto-da.github.io/images/vova/vova-dboard-hypervisor.png"></p>
+<p><a href=/images/vova/vova-dboard-hypervisor.png><img src="http://mizumoto-da.github.io/images/vova/vova-dboard-hypervisor.png"></a></p>
 
 <p>手順の前提で構成していたクラスタc1, c2がきちんと認識されているのが確認できますね。</p>
 
 <p>ここで、クラスタ（vCDriver経由のvCenter上のクラスタのコンピュートノード）へのホストの追加手順ですが、ESXiの初期設定を行ったホストを下記のようなウィザードで追加していました。</p>
 
-<p><img src="http://mizumoto-da.github.io/images/vova/vova-add-host-from-vcenter1.png"></p>
+<p><a href=/images/vova/vova-add-host-from-vcenter1.png><img src="http://mizumoto-da.github.io/images/vova/vova-add-host-from-vcenter1.png"></a></p>
 
-<p><img src="http://mizumoto-da.github.io/images/vova/vova-add-host-from-vcenter2.png"></p>
+<p><a href=/images/vova/vova-add-host-from-vcenter2.png><img src="http://mizumoto-da.github.io/images/vova/vova-add-host-from-vcenter2.png"></a></p>
 
 <p>いかがでしょうか。今後OpenStackのユースケースがエンタープライズ用途に拡大して行けば、KVMや他のコンピュート用ドライバと並んでVMware環境を接続することのイメージはつかんでいただけたかと思います。</p>
 
@@ -131,7 +131,8 @@
     <id>http://mizumoto-da.github.io/blog/openstack-vova-havana</id>
     <content type="html"><![CDATA[<p>OpenStack Havana リリースを使いたい！ということで色々やっているんですが、やはりパッケージに勝るものはない、ということで今回はVOVAです。</p>
 
-<p>11月にHavana版がリリースされてます。主な機能追加は下記です。</p>
+<p>11月にHavana版がリリースされてます。主な機能追加は下記です。
+<a href=http://blogs.vmware.com/vsphere/files/2013/11/Team-OpenStack-@-VMware-300x220.png><img class="right" src="http://blogs.vmware.com/vsphere/files/2013/11/Team-OpenStack-@-VMware-300x220.png"></a></p>
 
 <ul>
 <li>novaコンピュートノードあたりvCenter配下の複数のクラスタに対応</li>
@@ -141,8 +142,6 @@
 </ul>
 
 
-<p><img class="right" src="http://blogs.vmware.com/vsphere/files/2013/11/Team-OpenStack-@-VMware-300x220.png"></p>
-
 <p>コミュニティのページはこちらです。</p>
 
 <!--more-->
@@ -151,6 +150,8 @@
 <p><a href="https://communities.vmware.com/community/vmtn/openstack">https://communities.vmware.com/community/vmtn/openstack</a></p>
 
 <p>こちらにあるマニュアルにOVAのイメージのURLが記載されていますので、ダウンロード後インストール対象の環境にデプロイしてください。</p>
+
+<p>実際のインストールについては<a href="http://mizumoto-da.github.io/blog/openstack-option-and-freedom">次回の記事</a>でも紹介します。</p>
 ]]></content>
   </entry>
   
@@ -159,7 +160,8 @@
     <link href="http://mizumoto-da.github.io/blog/vsphere-5-5-nested-environment-for-lab/"/>
     <updated>2013-12-21T05:34:10+09:00</updated>
     <id>http://mizumoto-da.github.io/blog/vsphere-5-5-nested-environment-for-lab</id>
-    <content type="html"><![CDATA[<p>最近身の回りでは自宅ラボを構築するというのがはやりになっているようです。機材を調達して自宅IaaS基盤を構築し、思い思いのシステムを作っては壊し、ということでしょう。</p>
+    <content type="html"><![CDATA[<p><a href=/images/vsphere/esxi-nest-install1331820.png><img class="right" src="http://mizumoto-da.github.io/images/vsphere/esxi-nest-install1331820.png" width="320"></a>
+最近身の回りでは自宅ラボを構築するというのがはやりになっているようです。機材を調達して自宅IaaS基盤を構築し、思い思いのシステムを作っては壊し、ということでしょう。</p>
 
 <p>そういった基盤を構成する上で書かせないのがハイパーバイザーを使った環境になる訳ですが、ハイパーバイザー自身のシステムを動作させるためには、ある程度のハードウェアリソースが必要になりますし、何よりハイパーバイザー上にハイパーバイザーを動作させるネスト環境が必要になる訳です。</p>
 
@@ -170,7 +172,8 @@
 
 <p>まず、ベースとなるESXi 5.5をインストールします。これは通常の方法で構いません。</p>
 
-<p>起動後、SSHログインを有効化し、下記の設定ファイルの変更とhostdサービスの再起動を行います。</p>
+<p><a href=/images/vsphere/esxi-nest-vsphereclient-svcproperties-ssh.png><img class="right" src="http://mizumoto-da.github.io/images/vsphere/esxi-nest-vsphereclient-svcproperties-ssh.png" width="200"></a>
+起動後、SSHログインを有効化し、下記の設定ファイルの変更とhostdサービスの再起動を行います。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -194,19 +197,35 @@
 
 
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>~ # /etc/init.d/hostd restart
-</span><span class='line'>watchdog-hostd: Terminating watchdog process with PID 33855
-</span><span class='line'>hostd stopped.
-</span><span class='line'>Ramdisk 'hostd' with estimated size of 553MB already exists
-</span><span class='line'>hostd started.</span></code></pre></td></tr></table></div></figure>
+<pre>
+~ # /etc/init.d/hostd restart
+watchdog-hostd: Terminating watchdog process with PID 33855
+hostd stopped.
+Ramdisk 'hostd' with estimated size of 553MB already exists
+hostd started.
+</pre>
 
 
-<p>ネスト化されたVMとしてのESXiをインストールします。この際、ウィザード上は一旦OSの種別でOther Linux(64bit)を選択し、VMの作成が終わった時点で再度OSのタイプを指定します。するとVMware ESXi 5.xが選択できます。こちらを行ってから再びESXiのインストールを行ってください。</p>
+<p>ネスト化されたVMとしてのESXiをインストールします。この際、ウィザード上は一旦OSの種別でOther Linux(64bit)を選択し、VMの作成が終わった時点で再度OSのタイプを指定します。</p>
+
+<p><a href=/images/vsphere/esxi-nest-other64.png><img src="http://mizumoto-da.github.io/images/vsphere/esxi-nest-other64.png" width="480"></a></p>
+
+<p>するとVMware ESXi 5.xが選択できます。こちらを行ってから再びESXiのインストールを行ってください。</p>
+
+<p><a href=/images/vsphere/esxi-nest-vmwareesxi5x.png><img src="http://mizumoto-da.github.io/images/vsphere/esxi-nest-vmwareesxi5x.png" width="480"></a></p>
+
+<p>上記vhv.enable = &ldquo;true&#8221;が有効になっていない場合は下記のようなメッセージが出力される場合があります。</p>
+
+<p><a href=/images/vsphere/esxi-nest-install-cpu-warning.png><img src="http://mizumoto-da.github.io/images/vsphere/esxi-nest-install-cpu-warning.png" width="480"></a></p>
+
+<p>このような場合は、まずベースのESXiのハードウェアが&#8221;nestedHVSupported&#8221;値をどう扱っているかを確認してみてください。
+URLは</p>
+
+<p><a href="https://">https://</a> esxi のIPアドレス /mob/?moid=ha-host&amp;doPath=capability</p>
+
+<p><a href=/images/vsphere/esxi-nest-nestedHVSupported.png><img src="http://mizumoto-da.github.io/images/vsphere/esxi-nest-nestedHVSupported.png" width="480"></a></p>
+
+<p>※ こちらの機能はVMware社のサポート対象外です</p>
 ]]></content>
   </entry>
   

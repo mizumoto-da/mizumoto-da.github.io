@@ -131,17 +131,17 @@ $(document).ready( function () {
 <p>基本的には上記の通りですが、ESXi用のネットワーク構成として管理用のネットワーク（VM Network）とOpenStack用のネットワーク（br100, VLAN100）をそれぞれ構成し、ESXiに仮想NICとして接続しておきます。</p>
 
 <p>まず、VOVAのOVAファイルをデプロイします。vCenterにvSphereクライアントからログインし、ダウンロード済みのVOVAを選択します。
-<img src="/images/vova/vova-ovf-deploy.png"></p>
+<a href=/images/vova/vova-ovf-deploy.png><img src="/images/vova/vova-ovf-deploy.png"></a></p>
 
 <p>テンプレートに関連情報を入力します。これはOpenStackとvCenterを接続するための情報としてVOVAのVMをデプロイするときに自動的に設定されます。
-<img src="/images/vova/vova-ovf-template.png"></p>
+<a href=/images/vova/vova-ovf-template.png><img src="/images/vova/vova-ovf-template.png"></a></p>
 
 <p>しばらくするとVOVAのデプロイが終わり、VOVA VMのコンソールに下記のようなメッセージが出力されます。この環境では外部接続用のネットワークにDHCPを使用しているため、自動的にOpenStack Dashboard用のIPも割り当てられています。
-<img src="/images/vova/vova-boot-console.png"></p>
+<a href=/images/vova/vova-boot-console.png><img src="/images/vova/vova-boot-console.png"></a></p>
 
 <p>DashboardにWebブラウザで接続してみます。</p>
 
-<p><img src="/images/vova/vova-login.png"></p>
+<p><a href=/images/vova/vova-login.png><img src="/images/vova/vova-login.png"></a></p>
 
 <p>demoユーザでログインできます。ここまででOpenStack + vCenter/vSphereのnova-compute環境の構成が完了しました。</p>
 
@@ -149,15 +149,15 @@ $(document).ready( function () {
 
 <p>さらに、computeがどう構成されているかを見てみます。adminユーザで再度Dashboardにログインしてみます。</p>
 
-<p><img src="/images/vova/vova-dboard-hypervisor.png"></p>
+<p><a href=/images/vova/vova-dboard-hypervisor.png><img src="/images/vova/vova-dboard-hypervisor.png"></a></p>
 
 <p>手順の前提で構成していたクラスタc1, c2がきちんと認識されているのが確認できますね。</p>
 
 <p>ここで、クラスタ（vCDriver経由のvCenter上のクラスタのコンピュートノード）へのホストの追加手順ですが、ESXiの初期設定を行ったホストを下記のようなウィザードで追加していました。</p>
 
-<p><img src="/images/vova/vova-add-host-from-vcenter1.png"></p>
+<p><a href=/images/vova/vova-add-host-from-vcenter1.png><img src="/images/vova/vova-add-host-from-vcenter1.png"></a></p>
 
-<p><img src="/images/vova/vova-add-host-from-vcenter2.png"></p>
+<p><a href=/images/vova/vova-add-host-from-vcenter2.png><img src="/images/vova/vova-add-host-from-vcenter2.png"></a></p>
 
 <p>いかがでしょうか。今後OpenStackのユースケースがエンタープライズ用途に拡大して行けば、KVMや他のコンピュート用ドライバと並んでVMware環境を接続することのイメージはつかんでいただけたかと思います。</p>
 
@@ -243,7 +243,8 @@ $(document).ready( function () {
 
   <div class="entry-content"><p>OpenStack Havana リリースを使いたい！ということで色々やっているんですが、やはりパッケージに勝るものはない、ということで今回はVOVAです。</p>
 
-<p>11月にHavana版がリリースされてます。主な機能追加は下記です。</p>
+<p>11月にHavana版がリリースされてます。主な機能追加は下記です。
+<a href=http://blogs.vmware.com/vsphere/files/2013/11/Team-OpenStack-@-VMware-300x220.png><img class="right" src="http://blogs.vmware.com/vsphere/files/2013/11/Team-OpenStack-@-VMware-300x220.png"></a></p>
 
 <ul>
 <li>novaコンピュートノードあたりvCenter配下の複数のクラスタに対応</li>
@@ -252,8 +253,6 @@ $(document).ready( function () {
 <li>vDS(vSphere Distributed Switch: 分散仮想スイッチ</li>
 </ul>
 
-
-<p><img class="right" src="http://blogs.vmware.com/vsphere/files/2013/11/Team-OpenStack-@-VMware-300x220.png"></p>
 
 <p>コミュニティのページはこちらです。</p>
 
@@ -299,7 +298,8 @@ $(document).ready( function () {
   </header>
 
 
-  <div class="entry-content"><p>最近身の回りでは自宅ラボを構築するというのがはやりになっているようです。機材を調達して自宅IaaS基盤を構築し、思い思いのシステムを作っては壊し、ということでしょう。</p>
+  <div class="entry-content"><p><a href=/images/vsphere/esxi-nest-install1331820.png><img class="right" src="/images/vsphere/esxi-nest-install1331820.png" width="320"></a>
+最近身の回りでは自宅ラボを構築するというのがはやりになっているようです。機材を調達して自宅IaaS基盤を構築し、思い思いのシステムを作っては壊し、ということでしょう。</p>
 
 <p>そういった基盤を構成する上で書かせないのがハイパーバイザーを使った環境になる訳ですが、ハイパーバイザー自身のシステムを動作させるためには、ある程度のハードウェアリソースが必要になりますし、何よりハイパーバイザー上にハイパーバイザーを動作させるネスト環境が必要になる訳です。</p>
 

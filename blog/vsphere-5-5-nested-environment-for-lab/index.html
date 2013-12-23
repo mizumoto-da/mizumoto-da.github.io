@@ -97,7 +97,8 @@ $(document).ready( function () {
   </header>
 
 
-<div class="entry-content"><p>最近身の回りでは自宅ラボを構築するというのがはやりになっているようです。機材を調達して自宅IaaS基盤を構築し、思い思いのシステムを作っては壊し、ということでしょう。</p>
+<div class="entry-content"><p><a href=/images/vsphere/esxi-nest-install1331820.png><img class="right" src="/images/vsphere/esxi-nest-install1331820.png" width="320"></a>
+最近身の回りでは自宅ラボを構築するというのがはやりになっているようです。機材を調達して自宅IaaS基盤を構築し、思い思いのシステムを作っては壊し、ということでしょう。</p>
 
 <p>そういった基盤を構成する上で書かせないのがハイパーバイザーを使った環境になる訳ですが、ハイパーバイザー自身のシステムを動作させるためには、ある程度のハードウェアリソースが必要になりますし、何よりハイパーバイザー上にハイパーバイザーを動作させるネスト環境が必要になる訳です。</p>
 
@@ -108,7 +109,8 @@ $(document).ready( function () {
 
 <p>まず、ベースとなるESXi 5.5をインストールします。これは通常の方法で構いません。</p>
 
-<p>起動後、SSHログインを有効化し、下記の設定ファイルの変更とhostdサービスの再起動を行います。</p>
+<p><a href=/images/vsphere/esxi-nest-vsphereclient-svcproperties-ssh.png><img class="right" src="/images/vsphere/esxi-nest-vsphereclient-svcproperties-ssh.png" width="200"></a>
+起動後、SSHログインを有効化し、下記の設定ファイルの変更とhostdサービスの再起動を行います。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -132,19 +134,35 @@ $(document).ready( function () {
 
 
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>~ # /etc/init.d/hostd restart
-</span><span class='line'>watchdog-hostd: Terminating watchdog process with PID 33855
-</span><span class='line'>hostd stopped.
-</span><span class='line'>Ramdisk 'hostd' with estimated size of 553MB already exists
-</span><span class='line'>hostd started.</span></code></pre></td></tr></table></div></figure>
+<pre>
+~ # /etc/init.d/hostd restart
+watchdog-hostd: Terminating watchdog process with PID 33855
+hostd stopped.
+Ramdisk 'hostd' with estimated size of 553MB already exists
+hostd started.
+</pre>
 
 
-<p>ネスト化されたVMとしてのESXiをインストールします。この際、ウィザード上は一旦OSの種別でOther Linux(64bit)を選択し、VMの作成が終わった時点で再度OSのタイプを指定します。するとVMware ESXi 5.xが選択できます。こちらを行ってから再びESXiのインストールを行ってください。</p>
+<p>ネスト化されたVMとしてのESXiをインストールします。この際、ウィザード上は一旦OSの種別でOther Linux(64bit)を選択し、VMの作成が終わった時点で再度OSのタイプを指定します。</p>
+
+<p><a href=/images/vsphere/esxi-nest-other64.png><img src="/images/vsphere/esxi-nest-other64.png" width="480"></a></p>
+
+<p>するとVMware ESXi 5.xが選択できます。こちらを行ってから再びESXiのインストールを行ってください。</p>
+
+<p><a href=/images/vsphere/esxi-nest-vmwareesxi5x.png><img src="/images/vsphere/esxi-nest-vmwareesxi5x.png" width="480"></a></p>
+
+<p>上記vhv.enable = &ldquo;true&#8221;が有効になっていない場合は下記のようなメッセージが出力される場合があります。</p>
+
+<p><a href=/images/vsphere/esxi-nest-install-cpu-warning.png><img src="/images/vsphere/esxi-nest-install-cpu-warning.png" width="480"></a></p>
+
+<p>このような場合は、まずベースのESXiのハードウェアが&#8221;nestedHVSupported&#8221;値をどう扱っているかを確認してみてください。
+URLは</p>
+
+<p><a href="https://">https://</a> esxi のIPアドレス /mob/?moid=ha-host&amp;doPath=capability</p>
+
+<p><a href=/images/vsphere/esxi-nest-nestedHVSupported.png><img src="/images/vsphere/esxi-nest-nestedHVSupported.png" width="480"></a></p>
+
+<p>※ こちらの機能はVMware社のサポート対象外です</p>
 </div>
 
 
@@ -178,13 +196,8 @@ $(document).ready( function () {
   <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mizumoto-da.github.io/blog/vsphere-5-5-nested-environment-for-lab/" data-via="mizumoto-da" data-counturl="http://mizumoto-da.github.io/blog/vsphere-5-5-nested-environment-for-lab/" >Tweet</a>
   
   
-  <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button"
-      data-hatena-bookmark-layout="standard"
-      data-hatena-bookmark-url="http://mizumoto-da.github.io/blog/vsphere-5-5-nested-environment-for-lab/">
-    <img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-        alt="このエントリーをはてなブックマークに追加" width="20" height="20"
-        style="border: none">
-  </a>
+  <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" data-hatena-bookmark-url="http://mizumoto-da.github.io/blog/vsphere-5-5-nested-environment-for-lab/"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none"></a>
+    
   
 </div>
 

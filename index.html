@@ -141,11 +141,13 @@ Shadowbox.init({
 
 <p>基本的には上記の通りですが、ESXi用のネットワーク構成として管理用のネットワーク（VM Network）とOpenStack用のネットワーク（br100, VLAN100）をそれぞれ構成し、ESXiに仮想NICとして接続しておきます。</p>
 
-<p>まず、VOVAのOVAファイルをデプロイします。vCenterにvSphereクライアントからログインし、ダウンロード済みのVOVAを選択します。
-<a href=/images/vova/vova-ovf-deploy.png rel="shadowbox"><img src="/images/vova/vova-ovf-deploy.png" width="400"></a></p>
+<p>まず、VOVAのOVAファイルをデプロイします。vCenterにvSphereクライアントからログインし、ダウンロード済みのVOVAを選択します。</p>
 
-<p>テンプレートに関連情報を入力します。これはOpenStackとvCenterを接続するための情報としてVOVAのVMをデプロイするときに自動的に設定されます。
-<a href=/images/vova/vova-ovf-template.png rel="shadowbox"><img src="/images/vova/vova-ovf-template.png" width="400"></a></p>
+<p><a href=/images/vova/vova-ovf-deploy.png rel="shadowbox"><img src="/images/vova/vova-ovf-deploy.png" width="400"></a></p>
+
+<p>テンプレートに関連情報を入力します。これはOpenStackとvCenterを接続するための情報としてVOVAのVMをデプロイするときに自動的に設定されます。</p>
+
+<p><a href=/images/vova/vova-ovf-template.png rel="shadowbox"><img src="/images/vova/vova-ovf-template.png" width="400"></a></p>
 
 <p>しばらくするとVOVAのデプロイが終わり、VOVA VMのコンソールに下記のようなメッセージが出力されます。この環境では外部接続用のネットワークにDHCPを使用しているため、自動的にOpenStack Dashboard用のIPも割り当てられています。
 <a href=/images/vova/vova-boot-console.png rel="shadowbox"><img src="/images/vova/vova-boot-console.png" width="400"></a></p>
@@ -160,7 +162,7 @@ Shadowbox.init({
 
 <p>さらに、computeがどう構成されているかを見てみます。adminユーザで再度Dashboardにログインしてみます。</p>
 
-<p><a href=/images/vova/vova-dboard-hypervisor.png rel="shadowbox"><img src="/images/vova/vova-dboard-hypervisor.png" width="400"></a></p>
+<p><a href=/images/vova/vova-dboard-hypervisor.png rel="shadowbox"><img src="/images/vova/vova-dboard-hypervisor.png" width="480"></a></p>
 
 <p>手順の前提で構成していたクラスタc1, c2がきちんと認識されているのが確認できますね。</p>
 

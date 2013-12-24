@@ -4,7 +4,7 @@
   <title><![CDATA[Sarchitect echo]]></title>
   <link href="http://mizumoto-da.github.io/atom.xml" rel="self"/>
   <link href="http://mizumoto-da.github.io/"/>
-  <updated>2013-12-24T09:25:30+09:00</updated>
+  <updated>2013-12-24T09:33:33+09:00</updated>
   <id>http://mizumoto-da.github.io/</id>
   <author>
     <name><![CDATA[mizumoto-da]]></name>
@@ -49,17 +49,17 @@
 <p>基本的には上記の通りですが、ESXi用のネットワーク構成として管理用のネットワーク（VM Network）とOpenStack用のネットワーク（br100, VLAN100）をそれぞれ構成し、ESXiに仮想NICとして接続しておきます。</p>
 
 <p>まず、VOVAのOVAファイルをデプロイします。vCenterにvSphereクライアントからログインし、ダウンロード済みのVOVAを選択します。
-<a href=/images/vova/vova-ovf-deploy.png rel="shadowbox"><img src="http://mizumoto-da.github.io/images/vova/vova-ovf-deploy.png"></a></p>
+<a href=/images/vova/vova-ovf-deploy.png rel="shadowbox"><img src="http://mizumoto-da.github.io/images/vova/vova-ovf-deploy.png" width="400"></a></p>
 
 <p>テンプレートに関連情報を入力します。これはOpenStackとvCenterを接続するための情報としてVOVAのVMをデプロイするときに自動的に設定されます。
-<a href=/images/vova/vova-ovf-template.png rel="shadowbox"><img src="http://mizumoto-da.github.io/images/vova/vova-ovf-template.png"></a></p>
+<a href=/images/vova/vova-ovf-template.png rel="shadowbox"><img src="http://mizumoto-da.github.io/images/vova/vova-ovf-template.png" width="400"></a></p>
 
 <p>しばらくするとVOVAのデプロイが終わり、VOVA VMのコンソールに下記のようなメッセージが出力されます。この環境では外部接続用のネットワークにDHCPを使用しているため、自動的にOpenStack Dashboard用のIPも割り当てられています。
-<a href=/images/vova/vova-boot-console.png rel="shadowbox"><img src="http://mizumoto-da.github.io/images/vova/vova-boot-console.png"></a></p>
+<a href=/images/vova/vova-boot-console.png rel="shadowbox"><img src="http://mizumoto-da.github.io/images/vova/vova-boot-console.png" width="400"></a></p>
 
 <p>DashboardにWebブラウザで接続してみます。</p>
 
-<p><a href=/images/vova/vova-login.png rel="shadowbox"><img src="http://mizumoto-da.github.io/images/vova/vova-login.png"></a></p>
+<p><a href=/images/vova/vova-login.png rel="shadowbox"><img src="http://mizumoto-da.github.io/images/vova/vova-login.png" width="320"></a></p>
 
 <p>demoユーザでログインできます。ここまででOpenStack + vCenter/vSphereのnova-compute環境の構成が完了しました。</p>
 
@@ -67,19 +67,19 @@
 
 <p>さらに、computeがどう構成されているかを見てみます。adminユーザで再度Dashboardにログインしてみます。</p>
 
-<p><a href=/images/vova/vova-dboard-hypervisor.png rel="shadowbox"><img src="http://mizumoto-da.github.io/images/vova/vova-dboard-hypervisor.png"></a></p>
+<p><a href=/images/vova/vova-dboard-hypervisor.png rel="shadowbox"><img src="http://mizumoto-da.github.io/images/vova/vova-dboard-hypervisor.png" width="400"></a></p>
 
 <p>手順の前提で構成していたクラスタc1, c2がきちんと認識されているのが確認できますね。</p>
 
 <p>ここで、クラスタ（vCDriver経由のvCenter上のクラスタのコンピュートノード）へのホストの追加手順ですが、ESXiの初期設定を行ったホストを下記のようなウィザードで追加していました。</p>
 
-<p><a href=/images/vova/vova-add-host-from-vcenter1.png rel="shadowbox"><img src="http://mizumoto-da.github.io/images/vova/vova-add-host-from-vcenter1.png"></a></p>
+<p><a href=/images/vova/vova-add-host-from-vcenter1.png rel="shadowbox"><img src="http://mizumoto-da.github.io/images/vova/vova-add-host-from-vcenter1.png" width="320"></a></p>
 
-<p><a href=/images/vova/vova-add-host-from-vcenter2.png rel="shadowbox"><img src="http://mizumoto-da.github.io/images/vova/vova-add-host-from-vcenter2.png"></a></p>
+<p><a href=/images/vova/vova-add-host-from-vcenter2.png rel="shadowbox"><img src="http://mizumoto-da.github.io/images/vova/vova-add-host-from-vcenter2.png" width="320"></a></p>
 
 <p>いかがでしょうか。今後OpenStackのユースケースがエンタープライズ用途に拡大して行けば、KVMや他のコンピュート用ドライバと並んでVMware環境を接続することのイメージはつかんでいただけたかと思います。</p>
 
-<p>最後に上記環境のnova.confについて確認してみます。vCDriverが指定されています。</p>
+<p>最後に上記環境のnova.confについて確認してみます。nova-compute用のドライバとしてVMwareVCDriverが指定されています。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

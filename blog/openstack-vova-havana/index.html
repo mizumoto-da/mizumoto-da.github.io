@@ -34,6 +34,17 @@ $(document).ready( function () {
 <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link type="text/css" href="/stylesheets/shadowbox.css" rel="stylesheet" media="all" />
+<script type="text/javascript" src="/javascripts/shadowbox.js"></script>
+<script type="text/javascript">  
+Shadowbox.init({
+  overlayColor: '#000000',
+  overlayOpacity: 0.8,
+  handleOversize: 'resize',
+  flashParams:{wmode:"transparent"}
+});
+</script>
+
 
   
 
@@ -100,7 +111,7 @@ $(document).ready( function () {
 <div class="entry-content"><p>OpenStack Havana リリースを使いたい！ということで色々やっているんですが、やはりパッケージに勝るものはない、ということで今回はVOVAです。</p>
 
 <p>11月にHavana版がリリースされてます。主な機能追加は下記です。
-<a href=http://blogs.vmware.com/vsphere/files/2013/11/Team-OpenStack-@-VMware-300x220.png><img class="right" src="http://blogs.vmware.com/vsphere/files/2013/11/Team-OpenStack-@-VMware-300x220.png"></a></p>
+<a href=http://blogs.vmware.com/vsphere/files/2013/11/Team-OpenStack-@-VMware-300x220.png rel="shadowbox"><img class="right" src="http://blogs.vmware.com/vsphere/files/2013/11/Team-OpenStack-@-VMware-300x220.png"></a></p>
 
 <ul>
 <li>novaコンピュートノードあたりvCenter配下の複数のクラスタに対応</li>
